@@ -2,197 +2,925 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Punit Dave – Business Analyst Portfolio</title>
+  <title>Punit | Business Analyst Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #fbbf24;
+      --accent-soft: rgba(251, 191, 36, 0.1);
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --border: #1f2933;
+      --pill-bg: #111827;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f5f5f5;
-      color: #222;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
     }
 
     header {
-      background: #1a1a1a;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 36px;
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent);
     }
 
     nav {
-      background: #333;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 16px;
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--accent);
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
     }
 
-    h2 {
-      color: #444;
-      border-left: 5px solid #000;
-      padding-left: 10px;
+    .hero-title {
+      font-size: clamp(32px, 5vw, 40px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
 
-    .project {
-      margin-bottom: 30px;
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
-    .project h3 {
-      margin: 0 0 10px;
-      color: #222;
+    .chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      background: var(--pill-bg);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: var(--text-muted);
     }
 
-    .project p {
-      margin: 0 0 10px;
-      color: #555;
+    .chip span {
+      color: var(--accent);
+      margin-right: 4px;
     }
 
-    .project a {
-      margin-right: 12px;
-      color: #0066cc;
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
       text-decoration: none;
     }
 
-    .project a:hover {
-      text-decoration: underline;
+    .btn-primary {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: #111827;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(251, 191, 36, 0.25);
     }
 
-    ul li {
-      margin-bottom: 15px;
-      line-height: 1.6;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(251, 191, 36, 0.35);
+    }
+
+    .btn-ghost {
+      border-color: #4b5563;
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-footnote {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 80%);
+      border-radius: 24px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+
+    .metric {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 14px;
+      padding: 8px 9px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .metric-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      color: #6ee7b7;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .hero-mini {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    /* Section basics */
+    section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 24px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.8);
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-card strong {
+      color: var(--text);
+    }
+
+    .about-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 8px;
+    }
+
+    .about-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .skill-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: #020617;
+      color: var(--text-muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(251, 191, 36, 0.6);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .link-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--text-muted);
+    }
+
+    .link-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Downloads */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .download-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .download-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .download-links {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .download-link {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .download-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Contact */
+    .contact-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .contact-row a {
+      color: var(--accent);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #777;
-      margin-top: 40px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 36px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(30, 64, 175, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
 <body>
+  <div class="page">
+    <header>
+      <div class="logo">PUNIT<span>.BA</span></div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#downloads">Docs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-<header>
-  <h1>Punit Dave – Business Analyst Portfolio</h1>
-  <p>Business Analyst • Data Analytics • Process Optimization • Python Automation</p>
-</header>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">
+          Business Analyst &<br />
+          <span>Data-Driven Problem Solver</span>
+        </h1>
+        <p class="hero-subtitle">
+          I help teams move from “gut feeling” to data-backed decisions using
+          SQL, Power BI, documentation and structured analysis.
+          This portfolio showcases real-world style BA projects across E-Commerce, FinTech, operations and automation.
+        </p>
 
-<nav>
-  <a href="#projects">Projects</a>
-  <a href="#downloads">Downloads</a>
-</nav>
+        <div class="hero-chips">
+          <div class="chip"><span>★</span> Requirements • BRD • FRD</div>
+          <div class="chip"><span>★</span> SQL • Power BI • Excel</div>
+          <div class="chip"><span>★</span> Jira • User Stories • UAT</div>
+        </div>
 
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Projects</a>
+          <a
+            href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/Resume_Punit.pdf"
+            class="btn btn-ghost"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Download Resume
+          </a>
+        </div>
 
-<!-- ⭐ PROJECTS SECTION -->
-<section id="projects">
-  <h2>Portfolio Projects</h2>
+        <div class="hero-footnote">
+          Open to Business Analyst / Data Analyst roles in India & Dubai.
+        </div>
+      </div>
 
-  <div class="project">
-    <h3>01. E-Commerce Sales Insights Dashboard</h3>
-    <p>Dashboard analyzing sales, profitability, and customer trends to support e-commerce decision-making.</p>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/01_ecommerce_sales_insights" target="_blank">GitHub Folder</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/01_ecommerce_sales_insights/BRD_Ecommerce.docx" target="_blank">BRD</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/01_ecommerce_sales_insights/FRD_Ecommerce.docx" target="_blank">FRD</a>
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-pill">BA Portfolio Snapshot</div>
+          <div class="hero-tagline">End-to-end projects • Real scenarios</div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Projects</div>
+            <div class="metric-value">5</div>
+            <div class="metric-sub">E-Com • FinTech • Ops</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Stack</div>
+            <div class="metric-value">SQL · BI · Jira</div>
+            <div class="metric-sub">+ Python automation</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Focus</div>
+            <div class="metric-value">Insights</div>
+            <div class="metric-sub">Root cause analysis</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Docs</div>
+            <div class="metric-value">BRD/FRD</div>
+            <div class="metric-sub">User stories • UAT</div>
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <div class="hero-mini">
+            “Numbers tell the story.<br />Documentation makes it executable.”
+          </div>
+          <div class="hero-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Business Analyst with a background in finance, hands-on experience in SQL, Power BI,
+        and real-world style BA projects including BRD/FRD, user stories and process improvement.
+      </p>
+      <div class="about">
+        <div class="about-card">
+          <strong>Who I am</strong>
+          <p>
+            I enjoy understanding problems deeply, working with data to find patterns,
+            and translating business requirements into clear, actionable solutions for
+            technical and business teams.
+          </p>
+          <ul class="about-list">
+            <li>MBA (Finance) with an analytical mindset</li>
+            <li>Hands-on portfolio across E-Commerce & FinTech datasets</li>
+            <li>Comfortable with both documentation and data work</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <strong>How I work</strong>
+          <p>
+            I start by clarifying the problem, explore data using SQL/Excel,
+            then design dashboards, flows and documentation (BRD/FRD, user stories).
+            I validate everything against source data and always aim for clarity.
+          </p>
+          <ul class="about-list">
+            <li>Ask precise questions, avoid assumptions</li>
+            <li>Use SQL to validate dashboard metrics</li>
+            <li>Document just enough – clear, simple, maintainable</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Tools</h2>
+      <p class="section-subtitle">
+        A mix of business analysis, data skills and delivery tools commonly used in BA & Analyst roles.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-title">Business Analysis</div>
+          <p>Requirements, problem framing and solution design.</p>
+          <div class="skill-tags">
+            <div class="skill-tag">Requirement Gathering</div>
+            <div class="skill-tag">BRD / FRD</div>
+            <div class="skill-tag">User Stories</div>
+            <div class="skill-tag">Acceptance Criteria</div>
+            <div class="skill-tag">UAT</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Data & Reporting</div>
+          <p>Using data to answer business questions and support decisions.</p>
+          <div class="skill-tags">
+            <div class="skill-tag">SQL</div>
+            <div class="skill-tag">Excel</div>
+            <div class="skill-tag">Power BI</div>
+            <div class="skill-tag">KPI Design</div>
+            <div class="skill-tag">Data Cleaning</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Process & Delivery</div>
+          <p>Ensuring work flows smoothly across teams.</p>
+          <div class="skill-tags">
+            <div class="skill-tag">As-Is / To-Be</div>
+            <div class="skill-tag">Process Mapping</div>
+            <div class="skill-tag">Jira</div>
+            <div class="skill-tag">Confluence</div>
+            <div class="skill-tag">Agile / Scrum</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Automation & Extras</div>
+          <p>Small automation to save time on repetitive work.</p>
+          <div class="skill-tags">
+            <div class="skill-tag">Python (Pandas)</div>
+            <div class="skill-tag">CSV to report flows</div>
+            <div class="skill-tag">Reusable scripts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Portfolio Projects</h2>
+      <p class="section-subtitle">
+        End-to-end Business Analyst projects that cover problem understanding, analysis,
+        documentation and delivery.
+      </p>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">E-Commerce Sales Insights Dashboard</div>
+            <div class="project-badge">E-Commerce · BI</div>
+          </div>
+          <div class="project-desc">
+            Built a Power BI dashboard on sales, products and customers.
+            Used SQL to validate metrics and wrote BRD/FRD for the dashboard requirements.
+          </div>
+          <div class="project-meta">
+            <span>Tools: SQL · Power BI · Excel</span>
+          </div>
+          <div class="project-links">
+            <a
+              class="link-pill"
+              href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/01_ecommerce_sales_insights"
+              target="_blank"
+            >View Repo</a>
+            <a class="link-pill" href="#downloads">BRD / FRD / SQL PDFs</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Payment Transactions Analysis (FinTech)</div>
+            <div class="project-badge">FinTech · Root Cause</div>
+          </div>
+          <div class="project-desc">
+            Analyzed payment success vs failures using SQL, segmented by device, city and amount,
+            and proposed retry logic. Created documentation to support a monitoring dashboard.
+          </div>
+          <div class="project-meta">
+            <span>Tools: SQL · Power BI · Excel</span>
+          </div>
+          <div class="project-links">
+            <a
+              class="link-pill"
+              href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/02_payment_transactions_analysis"
+              target="_blank"
+            >View Repo</a>
+            <a class="link-pill" href="#downloads">BRD / FRD / SQL PDFs</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Support Process Improvement Case</div>
+            <div class="project-badge">Process · Ops</div>
+          </div>
+          <div class="project-desc">
+            Mapped the current support workflow (As-Is), identified bottlenecks and designed
+            an improved To-Be process with SLAs and escalation paths.
+          </div>
+          <div class="project-meta">
+            <span>Tools: Process Mapping</span>
+          </div>
+          <div class="project-links">
+            <a
+              class="link-pill"
+              href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/03_process_improvement_case"
+              target="_blank"
+            >View Repo</a>
+            <a class="link-pill" href="#downloads">Process Doc PDF</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">User Stories & Jira Simulation</div>
+            <div class="project-badge">Agile · Jira</div>
+          </div>
+          <div class="project-desc">
+            Wrote detailed user stories and acceptance criteria for features like payment retry
+            and low-stock alerts, simulating an Agile Jira environment.
+          </div>
+          <div class="project-meta">
+            <span>Tools: Jira · Confluence</span>
+          </div>
+          <div class="project-links">
+            <a
+              class="link-pill"
+              href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/04_user_stories_jira_project"
+              target="_blank"
+            >View Repo</a>
+            <a class="link-pill" href="#downloads">User Stories PDF</a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Python Automation — Daily Sales Summary</div>
+            <div class="project-badge">Automation</div>
+          </div>
+          <div class="project-desc">
+            Created a small Python script using Pandas to clean sales data and generate an
+            automatic daily summary report, replacing manual Excel work.
+          </div>
+          <div class="project-meta">
+            <span>Tools: Python · Pandas · CSV</span>
+          </div>
+          <div class="project-links">
+            <a
+              class="link-pill"
+              href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/05_python_automation_project"
+              target="_blank"
+            >View Repo</a>
+            <a class="link-pill" href="#downloads">Automation Doc PDF</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DOWNLOADS -->
+    <section id="downloads">
+      <h2 class="section-title">Documentation & Downloads</h2>
+      <p class="section-subtitle">
+        BRDs, FRDs, SQL case studies and dashboard mockups that you can review alongside the code.
+      </p>
+      <div class="downloads-grid">
+        <div class="download-card">
+          <div class="download-title">E-Commerce Dashboard Docs</div>
+          <p>Business and functional requirements for the sales insights dashboard.</p>
+          <div class="download-links">
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/01_ecommerce_sales_insights/BRD_Ecommerce_Dashboard.pdf"
+              target="_blank"
+            >BRD (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/01_ecommerce_sales_insights/FRD_Ecommerce_Dashboard.pdf"
+              target="_blank"
+            >FRD (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/01_ecommerce_sales_insights/SQL_Queries_Portfolio.pdf"
+              target="_blank"
+            >SQL Case Study (PDF)</a>
+          </div>
+        </div>
+
+        <div class="download-card">
+          <div class="download-title">Payment Transactions Docs</div>
+          <p>Root-cause analysis docs and monitoring dashboard requirements.</p>
+          <div class="download-links">
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/02_payment_transactions_analysis/BRD_Payments.pdf"
+              target="_blank"
+            >BRD (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/02_payment_transactions_analysis/FRD_Payments.pdf"
+              target="_blank"
+            >FRD (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/02_payment_transactions_analysis/SQL_Queries_Portfolio.pdf"
+              target="_blank"
+            >SQL Case Study (PDF)</a>
+          </div>
+        </div>
+
+        <div class="download-card">
+          <div class="download-title">Process & User Stories</div>
+          <p>Support workflow redesign and user stories for Agile delivery.</p>
+          <div class="download-links">
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/03_process_improvement_case/Process_Improvement_Document.pdf"
+              target="_blank"
+            >Process (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/04_user_stories_jira_project/User_Stories.pdf"
+              target="_blank"
+            >User Stories (PDF)</a>
+          </div>
+        </div>
+
+        <div class="download-card">
+          <div class="download-title">Automation & Dashboard Mockups</div>
+          <p>Python automation documentation and Power BI layout mockups.</p>
+          <div class="download-links">
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/05_python_automation_project/Python_Automation_Document.pdf"
+              target="_blank"
+            >Automation (PDF)</a>
+            <a
+              class="download-link"
+              href="https://raw.githubusercontent.com/punitdave1/punit-business-analyst-portfolio/main/PowerBI_Dashboard_Mockups.pdf"
+              target="_blank"
+            >Dashboard Layouts (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Open to Business Analyst / Data Analyst roles. Feel free to reach out if you'd like a walkthrough of any project.
+      </p>
+      <div class="contact-card">
+        <div><strong>Let’s talk.</strong> I’m happy to explain my approach, walk through the SQL and dashboards, or discuss how I can support your team.</div>
+        <div class="contact-row">
+          <!-- Replace with your real email and LinkedIn -->
+          <div>Email: <a href="mailto:punitdave000@gmail.com">punitdave000@gmail.com</a></div>
+          <div>LinkedIn: <a href="https://www.linkedin.com/in/punit-dave/" target="_blank">View Profile</a></div>
+          <div>GitHub: <a href="https://github.com/punitdave1" target="_blank">@punitdave1</a></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Punit · Business Analyst Portfolio
+    </footer>
   </div>
 
-  <div class="project">
-    <h3>02. Payment Transactions RCA Dashboard</h3>
-    <p>Root-cause analysis dashboard to identify patterns in payment failures by device, city, and time.</p>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/02_payment_transactions_rca" target="_blank">GitHub Folder</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/02_payment_transactions_rca/BRD_Payment_Project.docx" target="_blank">BRD</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/02_payment_transactions_rca/FRD_Payment_Project.docx" target="_blank">FRD</a>
-  </div>
-
-  <div class="project">
-    <h3>03. Python Automation Project</h3>
-    <p>Python script automating raw data cleaning, transformation, and summary report generation.</p>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/03_python_automation_project" target="_blank">GitHub Folder</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/03_python_automation_project/BRD_Python_Automation.docx" target="_blank">BRD</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/03_python_automation_project/FRD_Python_Automation.docx" target="_blank">FRD</a>
-  </div>
-
-  <div class="project">
-    <h3>04. Process Improvement Case Study</h3>
-    <p>Case study identifying workflow bottlenecks and designing an optimized future-state process.</p>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/04_process_improvement_case_study" target="_blank">GitHub Folder</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/04_process_improvement_case_study/BRD_Project3.docx" target="_blank">BRD</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/04_process_improvement_case_study/FRD_Project3.docx" target="_blank">FRD</a>
-  </div>
-
-  <div class="project">
-    <h3>05. Jira User Stories & BA Documentation</h3>
-    <p>Complete user stories, acceptance criteria, and requirement structure following agile methodology.</p>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/05_jira_user_stories" target="_blank">GitHub Folder</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/05_jira_user_stories/BRD_Project4.docx" target="_blank">BRD</a>
-    <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/05_jira_user_stories/FRD_Project4.docx" target="_blank">FRD</a>
-  </div>
-</section>
-
-
-<!-- ⭐ DOWNLOADS SECTION -->
-<section id="downloads">
-  <h2>Downloads</h2>
-  <ul>
-    <li><strong>01. E-Commerce Sales Insights</strong> — 
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/01_ecommerce_sales_insights">GitHub Folder</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/01_ecommerce_sales_insights/BRD_Ecommerce.docx">BRD</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/01_ecommerce_sales_insights/FRD_Ecommerce.docx">FRD</a>
-    </li>
-
-    <li><strong>02. Payment RCA Dashboard</strong> —
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/02_payment_transactions_rca">GitHub Folder</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/02_payment_transactions_rca/BRD_Payment_Project.docx">BRD</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/02_payment_transactions_rca/FRD_Payment_Project.docx">FRD</a>
-    </li>
-
-    <li><strong>03. Python Automation</strong> —
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/03_python_automation_project">GitHub Folder</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/03_python_automation_project/BRD_Python_Automation.docx">BRD</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/03_python_automation_project/FRD_Python_Automation.docx">FRD</a>
-    </li>
-
-    <li><strong>04. Process Improvement Case Study</strong> —
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/04_process_improvement_case_study">GitHub Folder</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/04_process_improvement_case_study/BRD_Project3.docx">BRD</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/04_process_improvement_case_study/FRD_Project3.docx">FRD</a>
-    </li>
-
-    <li><strong>05. Jira User Stories</strong> —
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/tree/main/05_jira_user_stories">GitHub Folder</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/05_jira_user_stories/BRD_Project4.docx">BRD</a> |
-      <a href="https://github.com/punitdave1/punit-business-analyst-portfolio/blob/main/05_jira_user_stories/FRD_Project4.docx">FRD</a>
-    </li>
-  </ul>
-</section>
-
-
-<footer>
-  © 2025 Punit Dave — Business Analyst Portfolio
-</footer>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
